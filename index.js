@@ -7,13 +7,13 @@ const config = require('./config/index');
 const swaggerUi = require('swagger-ui-express');
 
 // const adapter = require('./lib/redisEvents');
-const { 
-    logErrors, 
-    errorHandler, 
-    wrapErrors
-  } = require('./utils/middleware/errorHandlers');
+// const { 
+//     logErrors, 
+//     errorHandler, 
+//     wrapErrors
+//   } = require('./utils/middleware/errorHandlers');
 
-const notFoundHandler = require('./utils/middleware/notFoundHandler');
+// const notFoundHandler = require('./utils/middleware/notFoundHandler');
 
 // body parser
 app.use(cors());
@@ -28,12 +28,12 @@ const router = require('./routes/index');
 router(app);
 
 // Catch 404
-app.use(notFoundHandler);
+// app.use(notFoundHandler);
 
 // Errors middleware
-app.use(logErrors);
-app.use(wrapErrors);
-app.use(errorHandler);
+// app.use(logErrors);
+// app.use(wrapErrors);
+// app.use(errorHandler);
 
 app.listen(config.port, function () {  
   console.log(`Aplicacion iniciada en http://localhost:${config.port}`);

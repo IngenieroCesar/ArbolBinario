@@ -1,10 +1,7 @@
-const config = require('../../config');
 
 class NodoService {
     constructor(value){
         this.value = value
-        this.left = null
-        this.right = null
     }
 }
 
@@ -14,31 +11,47 @@ class CrearArbolBinarioService {
         this.root = null;
     }
 
-    insertarNodo(value){
-        var newNode = new NodoService(value);
-        if(this.root === null){
-            this.root = newNode;
-            return this;
-        }
-        let current = this.root;
-        while(current){
-            if(value === current.value) return undefined;
-            if(value < current.value){
-                if(current.left === null){
-                    current.left = newNode;
-                    return this;
+
+    /*
+    Evaluamos y establecemos las posiciones de nuestros nodos.
+    */
+    insertarNodo(arrayTree, value){
+
+        let node = arrayTree, key;
+        while (node.value !== value && value != null) {
+                key = value < node.value ? 'izquierdo' : 'derecho';
+                if (!node[key]) {
+                    node[key] = new NodoService(value);
+                    break;
                 }
-                current = current.left;
-            } else {
-                if(current.right === null){
-                    current.right = newNode;
-                    return this;
-                } 
-                current = current.right;
-            }
+                node = node[key];
         }
+        return(arrayTree);
+
     }
 
+    /*
+    Generamos nuestro arbol binario
+    */
+    crearArbol( arrayTree ) {
+        return new Promise( ( resolve, reject ) => {
+            try {
+                let arbolBinario =  arrayTree.reduce((valorAnterior, valorActual) => valorAnterior ? this.insertarNodo(valorAnterior, valorActual) : new NodoService(valorActual), null);
+                resolve({ 
+                    data: arbolBinario,
+                    status: 200,
+                    message: "Arbol binario generado con exito."
+                });
+            } catch (error) {
+                reject({
+                    error: error.message,
+                    status: 500,
+                    message: "Problema al generar arbol binario."
+                })
+            }
+        });
+        
+    }
 
 }
 

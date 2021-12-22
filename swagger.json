@@ -1,0 +1,80 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "description": "",
+      "version": "1.0.0",
+      "title": ""
+    },
+    "paths": {
+      "/api/creararbolbinario": {
+        "post": {
+          "tags": [
+            ""
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items":{
+                    "type": "integer"
+                  },
+                  "example": [67, 39, 76, 28, 44, 74, 85, null, 29, 83, 87]                    
+                }
+              }
+            },
+            "description": "Creación de arbol binario basado en arreglo, con elementos enteros, de entrada."
+          },
+          "responses": {
+            "200": {
+                "description": "Arbol binario creado con exito",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "nodo" :{
+                                    "type": "integer",
+                                    "description": "Nodo principal de arbol binario."
+                                },
+                                "izquierdo" :{
+                                    "type": "integer",
+                                    "description": "Nodo izquierdo de nodo principal de arbol binario."
+                                },
+                                "derecho" :{
+                                    "type": "integer",
+                                    "description": "Nodo derecho de nodo principal de arbol binario."
+                                }
+                            },
+                            "example": {
+                                "nodo":67,
+                                "izquierdo":{
+                                   "nodo":39,
+                                   "izquierdo":{ 
+                                       "nodo":28,
+                                       "izquierdo":{"nodo":null},
+                                       "derecho":{"nodo":29}
+                                     },
+                                   "derecho":{"nodo":44}
+                                },
+                                "derecho":{
+                                   "nodo":76,
+                                   "izquierdo":{ 
+                                        "nodo":74
+                                    },
+                                   "derecho":{ 
+                                        "nodo":85,
+                                        "izquierdo":{"nodo":83},
+                                        "derecho":{"nodo":87}
+                                    }
+                                }
+                             }
+                        }
+                    }
+                }
+            }
+          }
+        }
+      }
+    }
+  }
