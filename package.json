@@ -1,0 +1,19 @@
+{
+  "name": "arbolbinario",
+  "version": "1.0.0",
+  "description": "Aplicación javascript",
+  "author": "Cesar Garzon <ceagarzonpu@unal.edu.co>",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "keywords": [
+    "nodejs",
+    "express"
+  ],
+  "dependencies": {
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15"
+  }
+}
