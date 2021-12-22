@@ -1,7 +1,8 @@
+const store = require('./store');
 
 class NodoService {
-    constructor(value){
-        this.value = value
+    constructor(nodo){
+        this.nodo = nodo
     }
 }
 
@@ -15,16 +16,16 @@ class CrearArbolBinarioService {
     /*
     Evaluamos y establecemos las posiciones de nuestros nodos.
     */
-    insertarNodo(arrayTree, value){
+    insertarNodo(arrayTree, nodo){
 
-        let node = arrayTree, key;
-        while (node.value !== value && value != null) {
-                key = value < node.value ? 'izquierdo' : 'derecho';
-                if (!node[key]) {
-                    node[key] = new NodoService(value);
+        let nodoPrincipal = arrayTree, key;
+        while (nodoPrincipal.nodo !== nodo && nodo != null) {
+                key = nodo < nodoPrincipal.nodo ? 'izquierdo' : 'derecho';
+                if (!nodoPrincipal[key]) {
+                    nodoPrincipal[key] = new NodoService(nodo);
                     break;
                 }
-                node = node[key];
+                nodoPrincipal = nodoPrincipal[key];
         }
         return(arrayTree);
 
@@ -36,13 +37,20 @@ class CrearArbolBinarioService {
     crearArbol( arrayTree ) {
         return new Promise( ( resolve, reject ) => {
             try {
+
+                let currentArbolBinario = store.obtenerArbolNBinario;
+
+                currentArbolBinario.length > 0 ? store.actualizarArbolBinario(arrayTree) : store.crearArbolBinario(arrayTree);
+
                 let arbolBinario =  arrayTree.reduce((valorAnterior, valorActual) => valorAnterior ? this.insertarNodo(valorAnterior, valorActual) : new NodoService(valorActual), null);
                 resolve({ 
                     data: arbolBinario,
                     status: 200,
                     message: "Arbol binario generado con exito."
                 });
+
             } catch (error) {
+                console.log(error);
                 reject({
                     error: error.message,
                     status: 500,
