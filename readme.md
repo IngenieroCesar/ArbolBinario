@@ -52,7 +52,7 @@ Ejecute el siguiente comando en su consola:
 
 Dirijase a la siguiente ruta en el navegador, en la cual encontrara la documentacion correspondiente a los servicios expuestos por esta api.
 
-- http://localhost:<PUERTO>/api/swagger/docs/#/
+- http://localhost: < PUERTO > /api/swagger/docs/#/
 
 Estableciendo el puerto seleccionado en su archivo .env.
 
