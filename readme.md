@@ -38,11 +38,11 @@ Si la instalación fue exitosa, debería poder ejecutar el siguiente comando.
 
 Genere el archivo y establesca variables de entorno ".env", como se especifica en el archivo de ejemplo .env.example.
 
-## Configuracion base de datos redis
+## Configuracion base de datos redis(opcional)
 
 De ser necesario el proyecto cuenta con la capacidad de trabajar con base de datos, <REDIS_URL> <REDIS_PORT>, lo cual no es necesario para el correcto funcionamiento del proyecto.
 
-## Ejecutar base de datos redis Docker
+## Ejecutar base de datos redis Docker(opcional)
 
 Ejecute el siguiente comando en su consola:
 
