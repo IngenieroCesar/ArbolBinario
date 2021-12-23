@@ -15,11 +15,20 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items":{
-                    "type": "integer"
-                  },
-                  "example": [67, 39, 76, 28, 44, 74, 85, null, 29, 83, 87]                    
+                  "type": "object",
+                  "required": [
+                    "arrayTree"
+                  ],
+                  "properties": {
+                    "arrayTree": {
+                      "type": "string",
+                      "items":{
+                        "type": "integer"
+                      },
+                      "example": [67, 39, 76, 28, 44, 74, 85, null, 29, 83, 87]   
+                    }
+                  }
+                 
                 }
               }
             },
@@ -33,20 +42,35 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "nodo" :{
-                                    "type": "integer",
-                                    "description": "Nodo principal de arbol binario."
-                                },
-                                "izquierdo" :{
-                                    "type": "integer",
-                                    "description": "Nodo izquierdo de nodo principal de arbol binario."
-                                },
-                                "derecho" :{
-                                    "type": "integer",
-                                    "description": "Nodo derecho de nodo principal de arbol binario."
-                                }
+                              "data" :{
+                                  "type": "integer",
+                                  "properties": {
+                                    "nodo" :{
+                                      "type": "integer",
+                                      "description": "Nodo principal de arbol binario."
+                                    },
+                                    "izquierdo" :{
+                                        "type": "integer",
+                                        "description": "Nodo izquierdo de nodo principal de arbol binario."
+                                    },
+                                    "derecho" :{
+                                        "type": "integer",
+                                        "description": "Nodo derecho de nodo principal de arbol binario."
+                                    }
+                                  },
+                                  "description": "Nodo correspondiente al ancestro común más cercano encontrado.."
+                              },
+                              "status" :{
+                                  "type": "integer",
+                                  "description": "Request status"
+                              },
+                              "message" :{
+                                  "type": "string",
+                                  "description": "Ancestro común más cercano encontrado."
+                              }
                             },
                             "example": {
+                              "data": {
                                 "nodo":67,
                                 "izquierdo":{
                                    "nodo":39,
@@ -68,6 +92,82 @@
                                         "derecho":{"nodo":87}
                                     }
                                 }
+                              },
+                              "status": 200,
+                              "message": "Arbol binario generado con exito."
+
+                             }
+                        }
+                    }
+                }
+            }
+          }
+        }
+      },
+
+      "/api/buscarancestrocomun": {
+        "post": {
+          "tags": [
+            ""
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "arrayTree",
+                    "nodo1",
+                    "nodo2"
+                  ],
+                  "properties": {
+                    "arrayTree": {
+                      "type": "string",
+                      "items":{
+                        "type": "integer"
+                      },
+                      "example": [67, 39, 76, 28, 44, 74, 85, null, 29, 83, 87]   
+                    },
+                    "nodo1": {
+                      "type": "integer",
+                      "example": 67  
+                    },
+                    "nodo2": {
+                      "type": "integer",
+                      "example": 57  
+                    }
+                  }
+                 
+                }
+              }
+            },
+            "description": "Busqueda de ancestro común más cercano en arbol binario basado en arreglo, con elementos enteros, de entrada."
+          },
+          "responses": {
+            "200": {
+                "description": "Ancestro común más cercano encontrado",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "lowestCommonAncestor" :{
+                                    "type": "integer",
+                                    "description": "Nodo correspondiente al ancestro común más cercano encontrado.."
+                                },
+                                "status" :{
+                                    "type": "integer",
+                                    "description": "Request status"
+                                },
+                                "message" :{
+                                    "type": "string",
+                                    "description": "Ancestro común más cercano encontrado."
+                                }
+                            },
+                            "example": {
+                                "lowestCommonAncestor":67,
+                                "status": 200,
+                                "message": "Ancestro común más cercano encontrado."
                              }
                         }
                     }

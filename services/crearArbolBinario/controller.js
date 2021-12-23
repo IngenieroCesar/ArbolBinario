@@ -9,16 +9,15 @@ class NodoService {
 class CrearArbolBinarioService {
 
     constructor() {
-        this.root = null;
+  
     }
-
 
     /*
     Evaluamos y establecemos las posiciones de nuestros nodos.
     */
     insertarNodo(arrayTree, nodo){
-
         let nodoPrincipal = arrayTree, key;
+        console.log(nodoPrincipal);
         while (nodoPrincipal.nodo !== nodo && nodo != null) {
                 key = nodo < nodoPrincipal.nodo ? 'izquierdo' : 'derecho';
                 if (!nodoPrincipal[key]) {

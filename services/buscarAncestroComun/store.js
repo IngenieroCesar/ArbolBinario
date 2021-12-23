@@ -25,6 +25,7 @@ const iniciarConexion = async () => {
             client.on('error', async (err) => {
                 statusRedisConexion = false;                
             });
+
     
         } catch (error) {
             // console.log(error)
@@ -42,7 +43,7 @@ const crearArbolBinario = async ( arrayArbolBinario ) => {
         statusRedisConexion == false ?
             arbolBinario = arrayArbolBinario
             :
-            await client.set('arbol_binario', JSON.stringify(arrayArbolBinario))
+            await client.set('arbol_binario_2', JSON.stringify(arrayArbolBinario))
 
     } catch (error) {
         // console.log(error)
@@ -57,7 +58,7 @@ const obtenerArbolNBinario = async () => {
         statusRedisConexion == false ?
             arbolBinario
             :
-            JSON.parse(await client.get('arbol_binario'));
+            JSON.parse(await client.get('arbol_binario_2'));
     } catch (error) {
         // console.log(error)
     } 
@@ -70,7 +71,7 @@ const actualizarArbolBinario = async ( arrayArbolBinario ) => {
         statusRedisConexion == false ?
             arbolBinario = arrayArbolBinario
             :
-            await client.set('arbol_binario', JSON.stringify(arrayArbolBinario))
+            await client.set('arbol_binario_2', JSON.stringify(arrayArbolBinario))
     } catch (error) {
         // console.log(error)
     }
