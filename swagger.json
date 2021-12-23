@@ -1,15 +1,15 @@
 {
     "openapi": "3.0.0",
     "info": {
-      "description": "",
+      "description": "Api-Rest orientada a arquitectura limpia.",
       "version": "1.0.0",
-      "title": ""
+      "title": "Arbol Binario"
     },
     "paths": {
       "/api/creararbolbinario": {
         "post": {
           "tags": [
-            ""
+            "Creación de arbol binario"
           ],
           "requestBody": {
             "content": {
@@ -21,7 +21,7 @@
                   ],
                   "properties": {
                     "arrayTree": {
-                      "type": "string",
+                      "type": "array",
                       "items":{
                         "type": "integer"
                       },
@@ -66,7 +66,7 @@
                               },
                               "message" :{
                                   "type": "string",
-                                  "description": "Ancestro común más cercano encontrado."
+                                  "description": "Arbol binario generado con exito."
                               }
                             },
                             "example": {
@@ -108,7 +108,7 @@
       "/api/buscarancestrocomun": {
         "post": {
           "tags": [
-            ""
+            "Busqueda de ancestro común"
           ],
           "requestBody": {
             "content": {
@@ -122,7 +122,7 @@
                   ],
                   "properties": {
                     "arrayTree": {
-                      "type": "string",
+                      "type": "array",
                       "items":{
                         "type": "integer"
                       },
