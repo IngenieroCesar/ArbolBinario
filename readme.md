@@ -52,24 +52,24 @@ Ejecute el siguiente comando en su consola:
 
 Dirijase a la siguiente ruta en el navegador, en la cual encontrara la documentacion correspondiente a los servicios expuestos por esta api.
 
-- http://localhost:<PUERTO>/api/swagger/docs/#/
+- http://localhost: < PUERTO > /api/swagger/docs/#/
 
 Estableciendo el puerto seleccionado en su archivo .env.
 
 ## Ejecutar el proyecto en ambiente de desarrollo
 
-    $ npm dev
+    $ npm run dev
 
 ## Ejecutar test de integracion de los servicios
 
 Asegurese de que el proyecto este ejecutandose
 
-    $ npm dev
+    $ npm run dev
 
 Inicie el test de los servicios
 
-    $ npm test
+    $ npm run test
 
 ## Ejecutar el proyecto en ambiente de producción
 
-    $ npm start
+    $ npm run start
